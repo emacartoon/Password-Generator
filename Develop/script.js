@@ -69,6 +69,12 @@ function writePassword() {
 
 }
 
+//Prompt user for password length
+// Make sure that password legthn is between 8 and 128(inclusive)
+// Use a confirm propt the user for # special chars
+// Use a confirm propt the user for # numeric chars
+// Use a confirm propt the user for # uppercase chars
+// Use a confirm propt the user for # lowercase chars
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
