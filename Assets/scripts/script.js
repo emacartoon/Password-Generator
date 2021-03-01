@@ -98,76 +98,68 @@ function writePassword() {
 function generatePassword() {
   // Prompt user for password length
   // Make sure that password length between 8 and 128(inclusive)
-  
-  function setLength() {
-    var length = prompt("How long should your password be? Please choose a number between 8 and 128 characters.", "8");
-    // localStorage.setItem("length", length);
-    while (length > 128 || length < 8 ) {
-      length = prompt("Please use a number from 8 to 128");
-      // setLength();
-    }
-    console.log(length);
+
+  var length = prompt(
+    "How long should your password be? Please choose a number between 8 and 128 characters.",
+    "8"
+  );
+  // localStorage.setItem("length", length);
+  while (length > 128 || length < 8) {
+    length = prompt("Please use a number from 8 to 128");
+    // setLength();
   }
-  
-  setLength();
-  
+  console.log(length);
+
   //   Using a confirm prompt the user for special characters
   var specCharChk = prompt(
     "Include Special Characters? Hit OK if Yes, Cancel if No",
     "True"
-    );
-    console.log(specCharChk);
-    
-    //   Using a confirm prompt the user for numeric characters
-    var specNumChk = prompt(
-      "Include Number Characters? Hit OK if Yes, Cancel if No",
-      "True"
-      );
-      
-      console.log(specNumChk);
-      
-      //   Using a confirm prompt the user for uppercase characters
-      var specUCChk = prompt(
-        "Include Upper Case Characters? Hit OK if Yes, Cancel if No",
-        "True"
-        );
-        
-        console.log(specUCChk);
-        
-        //   Using a confirm prompt the user for lowercase characters
-        var specLCChk = prompt(
-          "Include Lower Case Characters? Hit OK if Yes, Cancel if No",
-          "True"
-          );
-          
-          console.log(specLCChk);
-          
-          // Algo for password generation goes below
-          
-          for (var i = 0; i < length; i++) {
-            if(specCharChk)
-            password += getRandomItem(specialCharacters);
-            if(specLCChk)
-            password += getRandomItem(lowerCasedCharacters);
-            if(specUCChk)
-            password += getRandomItem(upperCasedCharacters);
-            if(specNumChk)
-            password += getRandomItem(numericCharacters);
-          }
-          // Retrieve a random item from the provided array
-          function getRandomItem(arr) {
-            // Generate a random index from 0 to the length - 1 of our array
-            var randomIndex = Math.random() * arr.length;
-            // round down our random index
-            randomIndex = Math.floor(randomIndex);
-            // return the random item based off of our random index
-            return arr[randomIndex];
-            // One liner of the above code
-            // return arr[Math.floor(Math.random() * arr.length)];
-          }
-          console.log(password);
-          // return the build password
-          return password;
+  );
+  console.log(specCharChk);
 
-        }
-        
+  //   Using a confirm prompt the user for numeric characters
+  var specNumChk = prompt(
+    "Include Number Characters? Hit OK if Yes, Cancel if No",
+    "True"
+  );
+
+  console.log(specNumChk);
+
+  //   Using a confirm prompt the user for uppercase characters
+  var specUCChk = prompt(
+    "Include Upper Case Characters? Hit OK if Yes, Cancel if No",
+    "True"
+  );
+
+  console.log(specUCChk);
+
+  //   Using a confirm prompt the user for lowercase characters
+  var specLCChk = confirm(
+    "Include Lower Case Characters? Hit OK if Yes, Cancel if No"
+  );
+
+  console.log(specLCChk);
+
+  // Algo for password generation goes below
+  var password = "";
+  for (var i = 0; i < length; i++) {
+    if (specCharChk) password += getRandomItem(specialCharacters);
+    if (specLCChk) password += getRandomItem(lowerCasedCharacters);
+    if (specUCChk) password += getRandomItem(upperCasedCharacters);
+    if (specNumChk) password += getRandomItem(numericCharacters);
+  }
+  // Retrieve a random item from the provided array
+  function getRandomItem(arr) {
+    // Generate a random index from 0 to the length - 1 of our array
+    var randomIndex = Math.random() * arr.length;
+    // round down our random index
+    randomIndex = Math.floor(randomIndex);
+    // return the random item based off of our random index
+    return arr[randomIndex];
+    // One liner of the above code
+    // return arr[Math.floor(Math.random() * arr.length)];
+  }
+  console.log("HELLO:", password);
+  // return the build password
+  return password;
+}
