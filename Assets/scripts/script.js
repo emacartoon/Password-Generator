@@ -108,37 +108,26 @@ function generatePassword() {
     length = prompt("Please use a number from 8 to 128");
     // setLength();
   }
-  console.log(length);
 
   //   Using a confirm prompt the user for special characters
-  var specCharChk = prompt(
-    "Include Special Characters? Hit OK if Yes, Cancel if No",
-    "True"
+  var specCharChk = confirm(
+    "Include Special Characters? Hit OK if Yes, Cancel if No"
   );
-  console.log(specCharChk);
 
   //   Using a confirm prompt the user for numeric characters
-  var specNumChk = prompt(
-    "Include Number Characters? Hit OK if Yes, Cancel if No",
-    "True"
+  var specNumChk = confirm(
+    "Include Number Characters? Hit OK if Yes, Cancel if No"
   );
-
-  console.log(specNumChk);
 
   //   Using a confirm prompt the user for uppercase characters
-  var specUCChk = prompt(
-    "Include Upper Case Characters? Hit OK if Yes, Cancel if No",
-    "True"
+  var specUCChk = confirm(
+    "Include Upper Case Characters? Hit OK if Yes, Cancel if No"
   );
-
-  console.log(specUCChk);
 
   //   Using a confirm prompt the user for lowercase characters
   var specLCChk = confirm(
     "Include Lower Case Characters? Hit OK if Yes, Cancel if No"
   );
-
-  console.log(specLCChk);
 
   // Algo for password generation goes below
   var password = "";
@@ -159,7 +148,35 @@ function generatePassword() {
     // One liner of the above code
     // return arr[Math.floor(Math.random() * arr.length)];
   }
-  console.log("HELLO:", password);
+  console.log(password);
   // return the build password
   return password;
 }
+
+// Add event listener to generate button
+// copyBtn.addEventListener("click", copyPassword);
+
+//Option 1
+function copy() {
+  var password = document.querySelector("#password");
+  password.select();
+  document.execCommand("copy");
+}
+
+document.querySelector("#copy").addEventListener("click", copy);
+
+// Option 2
+// function myFunction() {
+//   /* Get the text field */
+//   var copyText = document.getElementById("myInput");
+
+//   /* Select the text field */
+//   copyText.select();
+//   copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+//   /* Copy the text inside the text field */
+//   document.execCommand("copy");
+
+//   /* Alert the copied text */
+//   alert("Copied the text: " + copyText.value);
+// }
