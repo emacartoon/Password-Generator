@@ -111,6 +111,10 @@ function generatePassword() {
     length = prompt("Please use a number from 8 to 128");
     // setLength();
   }
+  if (isNaN(length)){
+    alert("Please type a number from 8 to 128");
+    return;
+  }
 
   //   Using a confirm prompt the user for special characters
   var specCharChk = confirm(
@@ -132,16 +136,47 @@ function generatePassword() {
     "Include Lower Case Characters? Hit OK if Yes, Cancel if No"
   );
 
+  if (!specCharChk && !specNumChk && !specUCChk && !specLCChk){
+    alert("Please select at least one type of characters");
+    return;
+  }
+
+  var wholeShebang = []
+  var mustHaveChar = "";
+  if (specCharChk) {
+    wholeShebang = wholeShebang.concat(specialCharacters);
+    mustHaveChar += getRandomItem(specialCharacters);
+  } 
+  if (specLCChk) {
+    wholeShebang = wholeShebang.concat(lowerCasedCharacters);
+    mustHaveChar += getRandomItem(lowerCasedCharacters);
+  } 
+  if (specUCChk) {
+    wholeShebang = wholeShebang.concat(upperCasedCharacters);
+    mustHaveChar += getRandomItem(upperCasedCharacters);
+  }
+  if (specNumChk) {
+    wholeShebang = wholeShebang.concat(numericCharacters);
+    mustHaveChar += getRandomItem(numericCharacters);
+  }
+
   // Algo for password generation goes below
   var password = "";
   for (var i = 0; i < length; i++) {
-    if (specCharChk) password += getRandomItem(specialCharacters);
-    if (specLCChk) password += getRandomItem(lowerCasedCharacters);
-    if (specUCChk) password += getRandomItem(upperCasedCharacters);
-    if (specNumChk) password += getRandomItem(numericCharacters);
+   password += getRandomItem(wholeShebang);
+  
   }
-  // Somehow it's pulling 8 characters of each type - needs to be 8 characters total.
 
+  for (var i = 0; i < mustHaveChar.length; i++) {
+    let string = password;
+    password = string.replace(password[i], mustHaveChar[i])
+    console.log(password);
+    console.log(mustHaveChar);
+    return password;
+  }
+
+  // Somehow it's pulling 8 characters of each type - needs to be 8 characters total.
+  
   // Retrieve a random item from the provided array
   function getRandomItem(arr) {
     // Generate a random index from 0 to the length - 1 of our array
@@ -153,7 +188,6 @@ function generatePassword() {
     // One liner of the above code
     // return arr[Math.floor(Math.random() * arr.length)];
   }
-  console.log(password);
   // return the build password
   return password;
 }
