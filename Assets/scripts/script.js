@@ -1,3 +1,6 @@
+// https://github.com/emacartoon/Password-Generator
+// https://emacartoon.github.io/Password-Generator/
+
 // Array of special characters to be included in password
 var specialCharacters = [
   "@",
@@ -137,6 +140,8 @@ function generatePassword() {
     if (specUCChk) password += getRandomItem(upperCasedCharacters);
     if (specNumChk) password += getRandomItem(numericCharacters);
   }
+  // Somehow it's pulling 8 characters of each type - needs to be 8 characters total.
+
   // Retrieve a random item from the provided array
   function getRandomItem(arr) {
     // Generate a random index from 0 to the length - 1 of our array
