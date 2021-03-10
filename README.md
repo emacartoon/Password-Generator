@@ -41,8 +41,9 @@ Javascript and a pre-generated CSS and HTML 5.
 
 ## Screenshots
 
-![Screenshot of Generator](./Assets/img/JS Homework Screenshot.png)
-![Screenshot of Generator Function](./Assets/img/JS Homework Screenshot_02.png)
+![Screenshot of Generator](./Assets/img/JS%20Homework%20Screenshot.png)
+
+![Screenshot of the Function](./Assets/img/JS%20Homework%20Screenshot_02.png)
 
 
 ## Credits
